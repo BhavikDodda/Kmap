@@ -7,8 +7,7 @@ def NumberToBinArray(i,n0):
 minTerms=[0,1,2,5,7,8,9,13,15]
 N=math.floor(math.log2(max(minTerms)))+1
 booleanFunc=[NumberToBinArray(i,N) for i in minTerms]
-#print(N)
-#print(booleanFunc)
+
 ##
 twoToTheN=[NumberToBinArray(i,N) for i in range(2**N)]
 chooseCombinations=[]
@@ -16,8 +15,6 @@ for comb in twoToTheN:
     if sum(comb)>len(chooseCombinations)-1:
         chooseCombinations.append([])
     chooseCombinations[sum(comb)].append(comb)
-#print(twoToTheN)
-#print(chooseCombinations)
 
 #1:fixed, 0:vary and depending on number of 1s and 0s, we get pair, quads, octets etc.
 
@@ -46,8 +43,7 @@ for categoryofTeTs in chooseCombinations:
             print(tets)
             print(fixedPartOfSpecificTet)
             varyPart=[NumberToBinArray(i,Zeroes) for i in range(2**Zeroes)]
-            '''for insideTet in varyPart:
-                print(MapTwoListsOnBinTuple(fixedPartOfSpecificTet,insideTet,tets))'''
+            
             elementsInTet=[MapTwoListsOnBinTuple(fixedPartOfSpecificTet,insideTet,tets) for insideTet in varyPart]
             if all(i in keepTrack for i in elementsInTet): #to see if a tet was a subset of another tet that has been already covered
                 print('alr included')
