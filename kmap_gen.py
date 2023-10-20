@@ -4,7 +4,7 @@ def NumberToBinArray(i,n0):
 
     return tuple(int(k) for k in list(str(bin(i)[2:]).zfill(n0))) if n0>0 else tuple([])
 
-minTerms=[0,1,2,5,7,8,9,13,15]
+minTerms=[0,1,2,5,7,8,9,13,14]
 N=math.floor(math.log2(max(minTerms)))+1
 booleanFunc=[NumberToBinArray(i,N) for i in minTerms]
 
@@ -47,13 +47,14 @@ for categoryofTeTs in chooseCombinations:
             elementsInTet=[MapTwoListsOnBinTuple(fixedPartOfSpecificTet,insideTet,tets) for insideTet in varyPart]
             if all(i in keepTrack for i in elementsInTet): #to see if a tet was a subset of another tet that has been already covered
                 print('alr included')
-                break
+                continue
             if all(i in booleanFunc for i in elementsInTet):
                 print([-1 for i in range(len(tets)-len(fixedPartOfSpecificTet))])
                 minimization.append(MapTwoListsOnBinTuple(fixedPartOfSpecificTet, [-1 for i in range(len(tets)-len(fixedPartOfSpecificTet))] ,tets))
                 keepTrack.update(set(elementsInTet))
             print("tet")
             if len(keepTrack)==len(minTerms):
+                print('break0')
                 break
         print("----")
         if len(keepTrack)==len(minTerms):
