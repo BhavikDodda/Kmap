@@ -65,3 +65,13 @@ for categoryofTeTs in chooseCombinations:
         break
 
 print(minimization)
+
+varname=['a','b','c','d']
+
+
+def printBoolFunc(boolfunc):
+    temp1=[tuple(filter(lambda x:x!=0,[int((abs(term[i]+0.5)+abs(term[i])-2+0.5)*(i+1)) for i in range(N)])) for term in boolfunc]
+    return(" + ".join(["".join([varname[abs(ele)-1]+("'" if ele<0 else "") for ele in tup]) for tup in temp1]))
+
+print(printBoolFunc(booleanFunc))
+print(printBoolFunc(minimization))
