@@ -33,6 +33,7 @@ def MapTwoListsOnBinTuple(list1,list2,binlist):
 #print(MapTwoListsOnBinTuple([1,2,3],[4,5],(1,0,1,0,1)))
 minimization=[]
 keepTrack=set([])
+printingList=[]
 for categoryofTeTs in chooseCombinations:
     for tets in categoryofTeTs:
         Ones=sum(tets)
@@ -52,6 +53,7 @@ for categoryofTeTs in chooseCombinations:
                 print([-1 for i in range(len(tets)-len(fixedPartOfSpecificTet))])
                 minimization.append(MapTwoListsOnBinTuple(fixedPartOfSpecificTet, [-1 for i in range(len(tets)-len(fixedPartOfSpecificTet))] ,tets))
                 keepTrack.update(set(elementsInTet))
+                printingList.append(elementsInTet)
             print("tet")
             if len(keepTrack)==len(minTerms):
                 print('break0')
@@ -65,13 +67,18 @@ for categoryofTeTs in chooseCombinations:
         break
 
 print(minimization)
-
-varname=['a','b','c','d']
-
+#printing the minimization and showing the process
+varname=list(map(chr, range(97, 97+N))) if N<=26 else [f'x{i+1}' for i in range(N)]
 
 def printBoolFunc(boolfunc):
     temp1=[tuple(filter(lambda x:x!=0,[int((abs(term[i]+0.5)+abs(term[i])-2+0.5)*(i+1)) for i in range(N)])) for term in boolfunc]
-    return(" + ".join(["".join([varname[abs(ele)-1]+("'" if ele<0 else "") for ele in tup]) for tup in temp1]))
+    return(" + ".join(["1" if len(tup)==0 else "".join([varname[abs(ele)-1]+("'" if ele<0 else "") for ele in tup]) for tup in temp1]))
+
+def expandOut(boolfunc):
+    temp1=["".join([f"({varname[i]}+{varname[i]}')" if term[i]==-1 else (varname[i] if term[i]==1 else varname[i]+"'") for i in range(N)]) for term in boolfunc]
+    return(temp1)
 
 print(printBoolFunc(booleanFunc))
+print("\n("+") + (".join([printBoolFunc(theTet) for theTet in printingList])+")")
+print("\n("+") + (".join(expandOut(minimization))+")\n")
 print(printBoolFunc(minimization))
