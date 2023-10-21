@@ -5,6 +5,7 @@ def NumberToBinArray(i,n0):
     return tuple(int(k) for k in list(str(bin(i)[2:]).zfill(n0))) if n0>0 else tuple([])
 
 minTerms=[0,1,2,5,7,8,9,13,14]
+minTerms=list(set(minTerms))
 N=math.floor(math.log2(max(minTerms)))+1
 booleanFunc=[NumberToBinArray(i,N) for i in minTerms]
 
