@@ -44,4 +44,4 @@ As k varies from 0 to N, we generate all possible (N-k) tets and see if the func
 
 ## Demonstration
 
-![Example](Media/Code_J5RKLys6MO.mp4)
+https://github.com/BhavikDodda/Kmap/assets/118650442/e95acb76-3cae-4ea3-8923-fd4ec30e4cda
