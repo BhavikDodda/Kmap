@@ -41,3 +41,7 @@ As k varies from 0 to N, we generate all possible (N-k) tets and see if the func
 
 - Worst case scenario: It halts when k=N. Occurs when a minterm itself has to be included in the minimized expression where the minterm doesn't have any adjacent minterms present in the function and no n-tet for n>1 can include the term.
 - Best case scenario: It halts when k=0. Occurs when the given function is a complete DNF, and the minimized function is (1)
+
+## Demonstration
+
+![Example](Media/Code_J5RKLys6MO.mp4)
